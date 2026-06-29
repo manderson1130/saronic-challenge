@@ -1,75 +1,63 @@
-# React + TypeScript + Vite
+# Saronic Weather Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A 10-day marine and weather forecast for Gulfport, MS to inform go/no-go decisions for autonomous vessel demos.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This tool pulls hourly weather and marine forecast data from Open-Meteo and categorizes each day into one of three buckets:
 
-## React Compiler
+- **GO** — conditions are safe across all thresholds during demo hours
+- **IFFY** — conditions are marginal and warrant closer review
+- **NO-GO** — one or more conditions exceed safe operating limits
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- React + TypeScript
+- Vite
+- Tailwind CSS
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js v18+
+- npm v9+
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Getting Started
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+1. Clone the repository:
+```bash
+   git clone https://github.com/manderson1130/saronic-challenge.git
+   cd saronic-challenge
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Install dependencies:
+```bash
+   npm install
+```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+3. Start the development server:
+```bash
+   npm run dev
+```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+4. Open your browser to `http://localhost:5173`
 
+## Thresholds
+
+All go/no-go logic is centralized in `src/lib/thresholds.ts`. Thresholds can be adjusted there without touching any component code.
+
+| Condition   | NO-GO  |  IFFY    | GO    |
+| ---------   | -----  |  ----    | --    |
+| Wind Speed  | >20kts | 15-20kts | <15kts|
+| Wave Height | >4ft   |  2-4ft   | <2ft  |
+| Visibility  | <0.5nm | 0.5–5nm  | >5nm  |
+|Precipitation| >4mm   |  1-4mm   | <1mm  |
+
+## Project Structure
+
+```
+src/
+  components/       # UI components
+  hooks/            # Data fetching and transformation
+  lib/              # Threshold constants and categorization logic
+  types/            # Shared TypeScript interfaces
 ```
