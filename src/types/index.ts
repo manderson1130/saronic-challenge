@@ -20,7 +20,7 @@ export interface DailySummary {
     // the specifc day
     date: string;
     // determines if a day should be scheduled for a demo
-    category: DemoCategorgy;
+    category: DemoCategory;
     // all 24 hours of forecast data that can be used for drilldown
     hourly: HourlyForecast[];
 }
