@@ -2,8 +2,8 @@
 The main goal of this tool is to help Tara, or anyone else involved,
 schedule product demos by providing insight on the water and weather
 conditions at the Gulfport test site. The tool is not meant to be
-deterministic — it surfaces the right information in one place so Tara
-can make a confident call, rather than replacing her judgment.
+deterministic. It surfaces the right information in one place, so Tara
+can make a confident call rather than replacing her judgment.
 
 When planning this out, my main priorities were the functional
 requirements of the tool:
@@ -75,7 +75,7 @@ When evaluating future enhancements I like to weigh three factors:
 **reach** (how many users benefit from the change). With that framework
 in mind, here is how I would prioritize the roadmap:
 
-**1. Multiple Locations — Build Next**
+**1. Multiple Locations**
 
 Adding Panama City, Norfolk, and San Diego is the highest priority. The
 impact is significant because it expands the tool from a single-site
@@ -104,5 +104,5 @@ third. The current tool is designed for Tara's desktop morning routine
 and the component structure would need to be revisited for smaller
 screens. The reach is also more limited in this iteration since the
 description scopes it specifically to captains on the water. That said,
-the value is clear — anyone involved in a demo would benefit from a
-quick glance on their phone.
+everyone involved in the demo would benefit from taking a quick glance at
+their phone.
