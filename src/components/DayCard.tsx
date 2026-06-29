@@ -78,7 +78,7 @@ export function DayCard({ summary, onClick }: Props) {
         <div className="flex justify-between gap-2">
           <span>🌊 Waves</span>
           <span className="font-medium">
-            {worstWave !== null ? `${worstWave.toFixed(1)} m` : "N/A"}
+            {worstWave !== null ? `${(worstWave * 3.28084).toFixed(1)} ft` : "N/A"}
           </span>
         </div>
         <div className="flex justify-between gap-2">
